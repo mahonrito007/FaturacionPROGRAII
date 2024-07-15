@@ -10,10 +10,13 @@ public class Factura {
     private Cliente cliente;
     private ArrayList<Producto> productos;
     
-    Factura(int _numero, String _fecha, Cliente _cliente, ArrayList<Producto> _productos){
+    Factura(int _numero, String _fecha, Cliente _cliente){
         this.numero = _numero;
         this.fecha = _fecha;
         this.cliente = _cliente;
-        this.productos = _productos;
+    }
+    
+    public void agregarProducto(Producto p){
+        productos.add(p);
     }
 }

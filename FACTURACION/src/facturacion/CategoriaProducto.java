@@ -22,7 +22,7 @@ public class CategoriaProducto {
     
     public void mostrarInfo(){
         System.out.println("====CATEGORIA de PRODUCTO=====");
-        System.out.println("Nombre: "+ this.nombre + ""
+        System.out.println("Nombre: "+ this.nombre + "\n"
                 + "Pasillo: "+ this.pasillo);
     }
 }

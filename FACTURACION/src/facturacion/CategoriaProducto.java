@@ -6,7 +6,7 @@ public class CategoriaProducto {
     private int pasillo;
 
     CategoriaProducto(String _nombre, int _pasillo) throws Exception {
-        if (_nombre.isEmpty()) {
+        if (_nombre.isEmpty() || _nombre.isBlank()) {
             throw new Exception("Nombre vacio");
         } else {
             this.nombre = _nombre;
@@ -19,10 +19,9 @@ public class CategoriaProducto {
         }
 
     }
-    
-    public void mostrarInfo(){
-        System.out.println("====CATEGORIA de PRODUCTO=====");
-        System.out.println("Nombre: "+ this.nombre + "\n"
-                + "Pasillo: "+ this.pasillo);
+
+    public void mostrarInfo() {
+        System.out.printf("Tipo: %s Pasillo: %d", this.nombre, this.pasillo);
+        System.out.println("");
     }
 }

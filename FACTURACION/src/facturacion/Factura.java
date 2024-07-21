@@ -4,29 +4,41 @@ import java.util.ArrayList;
 
 public class Factura {
 
-    private int numero;
+    private final int numero;
     private String fecha;
     private Cliente cliente;
-    private ArrayList<Producto> productos;
+    private final ArrayList<Producto> productos;
 
+    @SuppressWarnings("unchecked")
     Factura(int _numero, String _fecha, Cliente _cliente) throws Exception {
         if (_numero < 0) {
             throw new Exception("ID de valor negativo");
         } else {
             this.numero = _numero;
         }
-
-        this.fecha = _fecha;
+        if (_fecha.length()==10){
+            this.fecha = _fecha;
+        }
+        else{
+            throw new Exception( "Error: La feha es invalida");
+        }
+        
         try {
             this.cliente = _cliente;
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            System.out.println(e);
         }
-
+        
+        this.productos = new ArrayList<>();
+        
     }
 
     public void agregarProducto(Producto p) {
-        this.productos.add(p);
+        try {
+            this.productos.add(p);
+        } catch (Exception e) {
+            System.out.println("No se pudo Agregar el Producto");
+        }
     }
 
     public void verFactura() {
@@ -35,11 +47,15 @@ public class Factura {
         System.out.println("Fecha: " + this.fecha);
         this.cliente.mostrarInfo();
         System.out.println("===============");
-        if (this.productos.size() == 0) {
+        if (!this.productos.isEmpty()) {
             for (int i = 0; i < productos.size(); i++) {
                 this.productos.get(i).mostrarInfo();
             }
         }
 
+    }
+    
+    public ArrayList<Producto> getProductos(){
+        return this.productos;
     }
 }

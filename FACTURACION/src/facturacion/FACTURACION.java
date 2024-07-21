@@ -7,33 +7,29 @@ public class FACTURACION {
 
     public static void listarFacturas(ArrayList<Factura> facturas) {
         int tam = facturas.size();
-        System.out.printf("%-8s  %-10s", "Factura No", "Nombre cliente");
+        System.out.printf("%-8s  %-10s %8s", "Factura No", "Nombre cliente", "Total");
         System.out.println("");
-        for (Factura f: facturas){
-            System.out.printf("  %-8d   %-10s", f.getNumeroFactura(), f.getNombreCliente());System.out.println("");
+        for (Factura f : facturas) {
+            System.out.printf("  %-8d   %-10s  %8d", f.getNumeroFactura(), f.getNombreCliente(), f.getTotal());
+            System.out.println("");
         }
-        
+
     }
-    
+
     public static double pagarFactura(Factura f) {
         ArrayList<Producto> productos = f.getProductos();
 
         double total = 0;
-//        System.out.printf("%-3s%-10s%-10s%-7s%n", "No","nombre","cantidad","precio");
-
+        
         for (int i = 0; i < productos.size(); i++) {
-//            int pos = i+1;
-//            String nombre = productos.get(i).getNombre();
+
             int cantidad = productos.get(i).getCantidad();
             double precio = productos.get(i).getPrecio();
-//            
-//            System.out.printf("%-3d%-13s%-7d%-5.2f",pos, nombre, cantidad, precio);
-//            System.out.println("");
-            double subtotal =  cantidad * precio;
+
+            double subtotal = cantidad * precio;
             total += subtotal;
         }
-        System.out.println("-".repeat(50));
-        System.out.println(" ".repeat(28) + "TOTAL A PAGAR: " + total);
+
         return total;
     }
 
@@ -101,9 +97,12 @@ public class FACTURACION {
                         } else if (opcionProducto == 2) {
 //                            System.out.println("Mostrando los productos");
                             nf.verFactura();
-                        } else if (opcionProducto == 3) {
-//                            System.out.println("Calculando el total");
-                            pagarFactura(nf);
+                            nf.setTotal(pagarFactura(nf));
+                            System.out.println("-".repeat(50));
+                            System.out.println(" ".repeat(28) + "TOTAL A PAGAR: " + nf.getTotal());
+                        } else {
+                            System.out.println("Opcion invalida");
+
                         }
 
                     }
@@ -111,9 +110,9 @@ public class FACTURACION {
                 } catch (Exception e) {
                     System.out.println("Error: " + e);
                 }
-            } else if (opcion == 2){
+            } else if (opcion == 2) {
                 listarFacturas(facturas);
-            }else {
+            } else {
                 System.out.println("Opcion invalida");
             }
         }

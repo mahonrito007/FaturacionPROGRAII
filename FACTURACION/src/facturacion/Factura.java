@@ -8,6 +8,7 @@ public class Factura {
     private String fecha;
     private Cliente cliente;
     private final ArrayList<Producto> productos;
+    private double TotalFActura = 0.0;
 
     @SuppressWarnings("unchecked")
     Factura(int _numero, String _fecha, Cliente _cliente, facturacion.Cliente cliente) throws Exception {
@@ -48,7 +49,7 @@ public class Factura {
         this.cliente.mostrarInfo();
         System.out.println("===============");
         if (!this.productos.isEmpty()) {
-            System.out.printf("%-3s %-13s %s %-7s %s %7s", "No", "Producto", "Cantidad", "tipo", "Pasillo", "precio");
+            System.out.printf("%-3s %-13s %-7s %s %s %7s", "No", "Producto",  "tipo", "Pasillo","Cantidad", "precio");
             System.out.println("");
             for (int i = 0; i < productos.size(); i++) {
                 this.productos.get(i).mostrarInfo(i + 1);
@@ -56,13 +57,22 @@ public class Factura {
         }
 
     }
-
+    
+    public void setTotal(Double total){
+        this.TotalFActura = total;
+    }
+    public double getTotal(){
+        if (this.TotalFActura == 0 ){
+            return 0.0;
+        }
+        return this.TotalFActura;
+    }
     public int getNumeroFactura() {
         return numero;
     }
     
     public String getNombreCliente(){
-        return cliente.nombre;
+        return cliente.getNombre();
     }
     
 

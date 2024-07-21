@@ -34,9 +34,9 @@ public class Producto {
         
         
         System.out.println("-".repeat(50));
-        System.out.printf("%-3d %-15s %-7d", pos,this.nombre, this.cantidad);
+        System.out.printf("%-3d %-15s ", pos,this.nombre);
         categoria.mostrarInfo();
-        System.out.printf("%8.2f",this.precio);
+        System.out.printf("%-7d %8.2f", this.cantidad,this.precio);
         System.out.println("");
 
     }

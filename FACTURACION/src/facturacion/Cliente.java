@@ -2,7 +2,7 @@ package facturacion;
 
 public class Cliente {
 
-    public String nombre;
+    private String nombre;
     private String rtn;
     private String direccion;
     private String telefono;
@@ -38,5 +38,9 @@ public class Cliente {
         System.out.println("Direccion: " + this.direccion);
         System.out.println("Telefono: " + this.telefono);
 
+    }
+    
+    public String getNombre(){
+        return this.nombre;
     }
 }

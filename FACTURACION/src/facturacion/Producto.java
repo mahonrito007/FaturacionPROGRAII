@@ -4,7 +4,7 @@ package facturacion;
 public class Producto {
     private String nombre;
     private Double precio;
-    private CategoriaProducto categoria;
+    private final CategoriaProducto categoria;
     private int cantidad;   
     
     Producto(String _nombre, Double _precio, CategoriaProducto _categoria,int _cantidad)throws Exception{
@@ -27,11 +27,18 @@ public class Producto {
         this.cantidad =  _cantidad;
     }
     
-    public void mostrarInfo(){
+    public void mostrarInfo(int pos){
+        if (pos == 0){
+            return;
+        }
         
-        System.out.printf("Producto: %-15s%-7d%-7.2f", this.nombre, this.cantidad, this.precio);
-        System.out.println("");
+        
+        System.out.println("-".repeat(50));
+        System.out.printf("%-3d %-15s %-7d", pos,this.nombre, this.cantidad);
         categoria.mostrarInfo();
+        System.out.printf("%8.2f",this.precio);
+        System.out.println("");
+
     }
     
     public double getPrecio(){

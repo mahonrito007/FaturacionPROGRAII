@@ -21,7 +21,7 @@ public class CategoriaProducto {
     }
 
     public void mostrarInfo() {
-        System.out.printf("Tipo: %s Pasillo: %d", this.nombre, this.pasillo);
-        System.out.println("");
+        System.out.printf("%-10s %-4d", this.nombre, this.pasillo);
+
     }
 }

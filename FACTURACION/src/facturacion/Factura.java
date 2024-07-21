@@ -57,6 +57,15 @@ public class Factura {
 
     }
 
+    public int getNumeroFactura() {
+        return numero;
+    }
+    
+    public String getNombreCliente(){
+        return cliente.nombre;
+    }
+    
+
     public ArrayList<Producto> getProductos() {
         return this.productos;
     }

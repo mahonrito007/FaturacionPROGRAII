@@ -5,6 +5,16 @@ import javax.swing.JOptionPane;
 
 public class FACTURACION {
 
+    public static void listarFacturas(ArrayList<Factura> facturas) {
+        int tam = facturas.size();
+        System.out.printf("%-8s  %-10s", "Factura No", "Nombre cliente");
+        System.out.println("");
+        for (Factura f: facturas){
+            System.out.printf("  %-8d   %-10s", f.getNumeroFactura(), f.getNombreCliente());System.out.println("");
+        }
+        
+    }
+    
     public static double pagarFactura(Factura f) {
         ArrayList<Producto> productos = f.getProductos();
 
@@ -29,10 +39,12 @@ public class FACTURACION {
 
     public static void main(String[] args) {
         Factura nf;
+        ArrayList<Factura> facturas = new ArrayList<>();
         System.out.println("Inicio");
         String menuPrincipal = """
                           MENU
                           1. Crear nueva Factura
+                          2. Ver facturas
                           0. Salir
                           """;
         while (true) {
@@ -53,6 +65,7 @@ public class FACTURACION {
                     String fecha = JOptionPane.showInputDialog("Ingrese la fecha: ");
 
                     nf = new Factura(numero, fecha, nc, null);
+                    facturas.add(nf);
                     while (true) {
                         String menuProductos = """
                           MENU
@@ -98,7 +111,9 @@ public class FACTURACION {
                 } catch (Exception e) {
                     System.out.println("Error: " + e);
                 }
-            } else {
+            } else if (opcion == 2){
+                listarFacturas(facturas);
+            }else {
                 System.out.println("Opcion invalida");
             }
         }

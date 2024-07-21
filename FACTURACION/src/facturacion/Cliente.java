@@ -2,10 +2,10 @@ package facturacion;
 
 public class Cliente {
 
-    String nombre;
-    String rtn;
-    String direccion;
-    String telefono;
+    public String nombre;
+    private String rtn;
+    private String direccion;
+    private String telefono;
 
     Cliente(String _nombre, String _rtn, String _direccion, String _telefono) throws Exception {
         if (_nombre.isEmpty()) {
